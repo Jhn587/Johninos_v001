@@ -3,6 +3,9 @@ import './App.css';
 import {
  PizzaOrderCreateForm 
 } from './ui-components';
+import {
+ GetPizzaOrderForm 
+} from './custom-components/GetPizzaOrderForm';
 
 
 function App() {
@@ -22,6 +25,7 @@ function App() {
             return updatedFields
         }}
     />
+    <GetPizzaOrderForm />
     </div>
   );
 }
