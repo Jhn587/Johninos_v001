@@ -1,0 +1,9 @@
+type PizzaOrder @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  orderId: String
+  customerId: String
+  storeId: String
+  orderStatus: String
+  pizzas: AWSJSON
+}
+ 

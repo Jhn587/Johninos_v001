@@ -25,12 +25,14 @@ export declare type NewForm1InputValues = {
     orderId?: string;
     customerId?: string;
     storeId?: string;
+    orderStatus?: string;
     pizzas?: string;
 };
 export declare type NewForm1ValidationValues = {
     orderId?: ValidationFunction<string>;
     customerId?: ValidationFunction<string>;
     storeId?: ValidationFunction<string>;
+    orderStatus?: ValidationFunction<string>;
     pizzas?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -39,6 +41,7 @@ export declare type NewForm1OverridesProps = {
     orderId?: PrimitiveOverrideProps<TextFieldProps>;
     customerId?: PrimitiveOverrideProps<TextFieldProps>;
     storeId?: PrimitiveOverrideProps<TextFieldProps>;
+    orderStatus?: PrimitiveOverrideProps<TextFieldProps>;
     pizzas?: PrimitiveOverrideProps<TextAreaFieldProps>;
 } & EscapeHatchProps;
 export declare type NewForm1Props = React.PropsWithChildren<{

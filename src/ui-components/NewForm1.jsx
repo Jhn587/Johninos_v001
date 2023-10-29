@@ -31,17 +31,22 @@ export default function NewForm1(props) {
     orderId: "",
     customerId: "",
     storeId: "",
+    orderStatus: "",
     pizzas: "",
   };
   const [orderId, setOrderId] = React.useState(initialValues.orderId);
   const [customerId, setCustomerId] = React.useState(initialValues.customerId);
   const [storeId, setStoreId] = React.useState(initialValues.storeId);
+  const [orderStatus, setOrderStatus] = React.useState(
+    initialValues.orderStatus
+  );
   const [pizzas, setPizzas] = React.useState(initialValues.pizzas);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setOrderId(initialValues.orderId);
     setCustomerId(initialValues.customerId);
     setStoreId(initialValues.storeId);
+    setOrderStatus(initialValues.orderStatus);
     setPizzas(initialValues.pizzas);
     setErrors({});
   };
@@ -49,6 +54,7 @@ export default function NewForm1(props) {
     orderId: [],
     customerId: [],
     storeId: [],
+    orderStatus: [],
     pizzas: [{ type: "JSON" }],
   };
   const runValidationTasks = async (
@@ -80,6 +86,7 @@ export default function NewForm1(props) {
           orderId,
           customerId,
           storeId,
+          orderStatus,
           pizzas,
         };
         const validationResponses = await Promise.all(
@@ -146,6 +153,7 @@ export default function NewForm1(props) {
               orderId: value,
               customerId,
               storeId,
+              orderStatus,
               pizzas,
             };
             const result = onChange(modelFields);
@@ -173,6 +181,7 @@ export default function NewForm1(props) {
               orderId,
               customerId: value,
               storeId,
+              orderStatus,
               pizzas,
             };
             const result = onChange(modelFields);
@@ -200,6 +209,7 @@ export default function NewForm1(props) {
               orderId,
               customerId,
               storeId: value,
+              orderStatus,
               pizzas,
             };
             const result = onChange(modelFields);
@@ -215,6 +225,34 @@ export default function NewForm1(props) {
         hasError={errors.storeId?.hasError}
         {...getOverrideProps(overrides, "storeId")}
       ></TextField>
+      <TextField
+        label="Order status"
+        isRequired={false}
+        isReadOnly={false}
+        value={orderStatus}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              orderId,
+              customerId,
+              storeId,
+              orderStatus: value,
+              pizzas,
+            };
+            const result = onChange(modelFields);
+            value = result?.orderStatus ?? value;
+          }
+          if (errors.orderStatus?.hasError) {
+            runValidationTasks("orderStatus", value);
+          }
+          setOrderStatus(value);
+        }}
+        onBlur={() => runValidationTasks("orderStatus", orderStatus)}
+        errorMessage={errors.orderStatus?.errorMessage}
+        hasError={errors.orderStatus?.hasError}
+        {...getOverrideProps(overrides, "orderStatus")}
+      ></TextField>
       <TextAreaField
         label="Pizzas"
         isRequired={false}
@@ -226,6 +264,7 @@ export default function NewForm1(props) {
               orderId,
               customerId,
               storeId,
+              orderStatus,
               pizzas: value,
             };
             const result = onChange(modelFields);
