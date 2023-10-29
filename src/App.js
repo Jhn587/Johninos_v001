@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+
 import './App.css';
 import {
  PizzaOrderCreateForm 
@@ -10,7 +11,9 @@ import {
 
 function App() {
   return (
+
     <div className="App">
+      <Example />
       <PizzaOrderCreateForm
         onSubmit={(fields) => {
             // Example function to trim all string inputs
@@ -24,10 +27,17 @@ function App() {
             })
             return updatedFields
         }}
-    />
-    <GetPizzaOrderForm />
+      />
+      <GetPizzaOrderForm />
     </div>
   );
 }
+
+function Example() {
+  useEffect(() => {
+    document.title = 'Johninos_v001';
+  }, []);
+}
+
 
 export default App;
