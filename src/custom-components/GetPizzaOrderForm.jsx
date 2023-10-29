@@ -1,4 +1,5 @@
 import * as React from "react";
+import { API } from "aws-amplify";
 
 export class GetPizzaOrderForm extends React.Component {
   constructor(props) {
@@ -16,8 +17,40 @@ export class GetPizzaOrderForm extends React.Component {
 
   handleSubmit(event) {
     alert('A orderId was checked: ' + this.state.orderId);
+    this.queryOrder(this.state.orderId);
     event.preventDefault();
   }
+
+  setOrderStatus(orderStatus) {
+    this.setState({
+      orderStatus: orderStatus,
+      orderId: this.state.orderId
+    });
+  }
+
+  queryOrder(orderId) {
+    const queryData = async () => {
+      const record = orderId
+        ? (
+            await API.graphql({
+              query: "query GetPizzaOrder($id: String!) { listPizzaOrders(filter: {orderId: {eq: $id}}) { items { orderStatus } } }  ",
+              variables: { id: orderId },
+            })
+          )
+        : "Error";
+      console.log(record);
+      let orderStatus = "";
+      if (record === "Error") {
+        orderStatus = record;
+      } else {
+        orderStatus = record.data.listPizzaOrders.items[0].orderStatus;
+      }
+      this.setOrderStatus(orderStatus);
+    };
+    queryData();
+  }
+
+
 
   render() {
     return (
