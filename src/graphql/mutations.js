@@ -11,6 +11,7 @@ export const createPizzaOrder = /* GraphQL */ `
       orderId
       customerId
       storeId
+      orderStatus
       pizzas
       createdAt
       updatedAt
@@ -28,6 +29,7 @@ export const updatePizzaOrder = /* GraphQL */ `
       orderId
       customerId
       storeId
+      orderStatus
       pizzas
       createdAt
       updatedAt
@@ -45,6 +47,7 @@ export const deletePizzaOrder = /* GraphQL */ `
       orderId
       customerId
       storeId
+      orderStatus
       pizzas
       createdAt
       updatedAt

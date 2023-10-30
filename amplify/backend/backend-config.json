@@ -21,5 +21,30 @@
       "providerPlugin": "awscloudformation",
       "service": "AppSync"
     }
+  },
+  "function": {
+    "OrderServiceAcksOrder": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_OrderServiceAcksOrder_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "OrderServiceAcksOrder"
+        }
+      ]
+    },
+    "AMPLIFY_function_OrderServiceAcksOrder_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "OrderServiceAcksOrder"
+        }
+      ]
+    }
   }
 }

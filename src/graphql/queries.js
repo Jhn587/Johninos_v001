@@ -8,6 +8,7 @@ export const getPizzaOrder = /* GraphQL */ `
       orderId
       customerId
       storeId
+      orderStatus
       pizzas
       createdAt
       updatedAt
@@ -27,6 +28,7 @@ export const listPizzaOrders = /* GraphQL */ `
         orderId
         customerId
         storeId
+        orderStatus
         pizzas
         createdAt
         updatedAt

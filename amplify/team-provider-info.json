@@ -10,6 +10,17 @@
       "StackName": "amplify-johninosv001-staging-130345",
       "StackId": "arn:aws:cloudformation:us-east-1:563357826428:stack/amplify-johninosv001-staging-130345/6da9bea0-7592-11ee-984c-0a4bf1837f0f",
       "AmplifyAppId": "d2mrujgvgjaza9"
+    },
+    "categories": {
+      "function": {
+        "OrderServiceAcksOrder": {
+          "deploymentBucketName": "amplify-johninosv001-staging-130345-deployment",
+          "s3Key": "amplify-builds/OrderServiceAcksOrder-566e396537504438502b-build.zip"
+        }
+      },
+      "api": {
+        "johninosv001": {}
+      }
     }
   }
 }
