@@ -1,6 +1,5 @@
 
-const AWS = require('aws-sdk');
-import { API } from "aws-amplify";
+// const API = require("aws-amplify");
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
@@ -24,10 +23,10 @@ exports.handler = async (event) => {
         }
     });
 
-  await API.graphql({
-              query: graphqlUpdateData,
-              variables: { $orderId: orderId, status: "paid" },
-            });
+  // await API.graphql({
+  //             query: graphqlUpdateData,
+  //             variables: { $orderId: orderId, status: "paid" },
+  //           });
 
     return {
         statusCode: 200,

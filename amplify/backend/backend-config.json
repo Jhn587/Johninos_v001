@@ -27,6 +27,26 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "OrderSystemConfirmsPayment": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "OrderSystemConfirmsPaymentV2": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput"
+          ],
+          "category": "api",
+          "resourceName": "johninosv001"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -43,6 +63,38 @@
         {
           "category": "function",
           "resourceName": "OrderServiceAcksOrder"
+        }
+      ]
+    },
+    "AMPLIFY_function_OrderSystemConfirmsPaymentV2_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "OrderSystemConfirmsPaymentV2"
+        }
+      ]
+    },
+    "AMPLIFY_function_OrderSystemConfirmsPaymentV2_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "OrderSystemConfirmsPaymentV2"
+        }
+      ]
+    },
+    "AMPLIFY_function_OrderSystemConfirmsPayment_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "OrderSystemConfirmsPayment"
+        }
+      ]
+    },
+    "AMPLIFY_function_OrderSystemConfirmsPayment_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "OrderSystemConfirmsPayment"
         }
       ]
     }

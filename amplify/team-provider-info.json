@@ -15,7 +15,15 @@
       "function": {
         "OrderServiceAcksOrder": {
           "deploymentBucketName": "amplify-johninosv001-staging-130345-deployment",
-          "s3Key": "amplify-builds/OrderServiceAcksOrder-566e396537504438502b-build.zip"
+          "s3Key": "amplify-builds/OrderServiceAcksOrder-6f386c74654f525a7345-build.zip"
+        },
+        "OrderSystemConfirmsPayment": {
+          "deploymentBucketName": "amplify-johninosv001-staging-130345-deployment",
+          "s3Key": "amplify-builds/OrderSystemConfirmsPayment-32394e3336685a47654f-build.zip"
+        },
+        "OrderSystemConfirmsPaymentV2": {
+          "deploymentBucketName": "amplify-johninosv001-staging-130345-deployment",
+          "s3Key": "amplify-builds/OrderSystemConfirmsPaymentV2-6b366a5039322b6a5843-build.zip"
         }
       },
       "api": {
