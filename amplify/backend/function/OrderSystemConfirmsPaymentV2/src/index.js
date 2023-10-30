@@ -15,22 +15,26 @@ const { Sha256 } = crypto;
 export const handler = async (event) => {
   console.log(`EVENT: ${JSON.stringify(event)}`);
   for (const record of event.Records) {
-    // console.log(record.eventID);
-    // console.log(record.eventName);
-    // console.log('DynamoDB Record: %j', record.dynamodb);
-    let confirmation = confirmPayment(record);
+    console.log(record);
+    console.log(record.eventID);
+    console.log(record.eventName);
+    console.log('DynamoDB Record: %j', record.dynamodb);
+    let confirmation = await confirmPayment(record.dynamodb);
     console.log('PAYMENT_CONFIRMATION DynamoDB Record: %j confirmation: %j', record.dynamodb, confirmation);
 
   }
   return Promise.resolve('Successfully processed PAYMENT of DynamoDB record');
 };
 
-confirmPayment(record) {
-  const id = event["id"];
-  if (orderStatus !== "placed"){
-    return "";
+const confirmPayment = async (record) => {
+  const id = record["Keys"]["id"]["S"];
+  console.log('id: %j', id);
+  const originalOrderStatus = record["NewImage"]["orderStatus"]["S"]
+  console.log('originalOrderStatus: %j', originalOrderStatus);
+  if (originalOrderStatus !== "placed"){
+    return {"body": "order not recently placed"};
   }
-  const orderStatus = "paid"; // customers always pay in prototype 
+  const newOrderStatus = "paid"; // customers always pay in prototype 
 
   const endpoint = new URL(GRAPHQL_ENDPOINT);
 
@@ -53,7 +57,7 @@ confirmPayment(record) {
         `,
         variables: {
           id: id,
-          status: orderStatus
+          status: newOrderStatus
         }
   });
 
@@ -92,4 +96,4 @@ confirmPayment(record) {
     };
   }
   return {body: body, status:statusCode};
-}
+};
